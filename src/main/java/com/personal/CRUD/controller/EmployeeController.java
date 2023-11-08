@@ -26,10 +26,34 @@ public class EmployeeController {
 
     //BUILD GET ALL EMPLOYEES REST API
     @GetMapping("")
-    public List<Employee> getEmployees(){
+    public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
     }
 
-    //BUILD GET EMPLOYEE BY ID REST API
+    //BUILD GET EMPLOYEE BY ID REST API(Returns specific employee by ID)
+    //http://localhost:8080/api/employees/3
+    @GetMapping("{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long employeeId){
+        return new ResponseEntity<Employee>(employeeService.getEmployeeById(employeeId),HttpStatus.OK);
+    }
+
+    //BUILD UPDATE EMPLOYEE REST API
+    //http://localhost:8080/api/employees/3
+    @PutMapping("{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employeeId,
+                                                   @RequestBody Employee employee){
+        return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, employeeId), HttpStatus.OK);
+
+    }
+    //BUILD DELETE EMPLOYEE REST EMPLOYEE
+    //http://localhost:8080/api/employees/3
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") long employeeId){
+
+        //Delete employee from database
+         employeeService.deleteEmployee();
+         return new ResponseEntity<String>(employeeService.deleteEmployee(employeeService.deleteEmployee();))
+    }
+
 }
 
