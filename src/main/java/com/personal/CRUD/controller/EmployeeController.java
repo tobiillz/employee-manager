@@ -51,9 +51,11 @@ public class EmployeeController {
     public ResponseEntity<String> deleteEmployee(@PathVariable("id") long employeeId){
 
         //Delete employee from database
-         employeeService.deleteEmployee();
-         return new ResponseEntity<String>(employeeService.deleteEmployee(employeeService.deleteEmployee();))
+         employeeService.deleteEmployee(employeeId);
+         return new ResponseEntity<String>("Employee has been successfully deleted!", HttpStatus.OK);
     }
+
+
 
 }
 
